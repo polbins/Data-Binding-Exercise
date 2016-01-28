@@ -4,16 +4,17 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.polbins.databindingsample.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    private User mUser;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "Clicked.", Toast.LENGTH_SHORT).show();
+            mUser.setPoints(mUser.getPoints() + 1);
+            // That's it, no need to manually update Views
         }
     };
 
@@ -22,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding =
                 DataBindingUtil.setContentView(this, R.layout.activity_main);
-        User user = new User("Gorgonio", "Magalpoc");
-        binding.setUser(user);
+        mUser = new User("Gorgonio", "Magalpoc", 0);
+        binding.setUser(mUser);
         binding.setHandler(mOnClickListener);
     }
 
