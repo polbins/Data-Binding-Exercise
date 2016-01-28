@@ -3,9 +3,15 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="user"
             type="com.polbins.databindingsample.User"/>
+
+        <variable
+            name="handler"
+            type="View.OnClickListener"/>
     </data>
 
     <LinearLayout
@@ -22,6 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.lastName}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{handler.onClick}"
+            android:text="@string/app_name"/>
     </LinearLayout>
 </layout>
 
